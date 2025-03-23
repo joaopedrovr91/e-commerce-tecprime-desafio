@@ -1,0 +1,14 @@
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item .quantity {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.list-group-item .btn {
+    margin-left: 5px;
+}

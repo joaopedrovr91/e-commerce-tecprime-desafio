@@ -1,4 +1,4 @@
-package com.e_commerce_tecprime_service.entity;
+package com.e_commerce_tecprime_service.populateFakeStore;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

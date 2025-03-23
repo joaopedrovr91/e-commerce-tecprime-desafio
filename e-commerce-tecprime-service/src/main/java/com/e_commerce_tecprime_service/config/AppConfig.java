@@ -1,4 +1,4 @@
-package com.e_commerce_tecprime_service.entity;
+package com.e_commerce_tecprime_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

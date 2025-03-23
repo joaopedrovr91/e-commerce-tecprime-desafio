@@ -6,11 +6,10 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "product") 
+@Table(name = "product")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title")
@@ -30,4 +29,7 @@ public class Product {
 
     @Column(name = "dataRegistration")
     private Timestamp dataRegistration;
+
+    @Version // Adicione o versionamento otimista
+    private Integer version;
 }

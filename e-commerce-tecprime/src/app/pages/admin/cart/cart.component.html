@@ -1,1 +1,19 @@
-<p>cart works!</p>
+<div class="card">
+    <div class="card-header">
+        Carrinho de Compras
+    </div>
+    <div class="card-body">
+        <ul class="list-group" *ngIf="cartItems.length > 0; else emptyCart">
+            <li class="list-group-item" *ngFor="let item of cartItems">
+                {{ item.title }} - Quantidade: {{ item.quantity }} - Preço Unitário: {{ item.price | currency:'BRL' }} - Subtotal: {{ item.price * item.quantity | currency:'BRL'}}
+            </li>
+        </ul>
+        <ng-template #emptyCart>
+            <p>O carrinho está vazio.</p>
+        </ng-template>
+    </div>
+    <div class="card-footer">
+        Total: {{getTotal() | currency:'BRL'}}
+        <button class="btn btn-danger float-end" (click)="clearCart()">Limpar carrinho</button>
+    </div>
+</div>

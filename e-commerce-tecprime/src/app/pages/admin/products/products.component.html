@@ -1,1 +1,32 @@
-<p>products works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <div class="row">
+          <div class="col-6">
+            Product List
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div *ngFor="let product of productList" class="col-md-3 mb-3">
+            <div class="card h-100">
+              <img class="card-img-top" [src]="product.image" [alt]="product.title">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text">Price: ${{ product.price }}</p>
+                <a class="btn btn-primary" (click)="addToCart(product)">Adicionar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-secondary me-2" (click)="previousPage()" [disabled]="page === 0">Anterior</button>
+        <button class="btn btn-secondary" (click)="nextPage()" [disabled]="isLastPage">Próxima</button>
+      </div>
+    </div>
+  </div>
+</div>
