@@ -12,9 +12,9 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) { // Injeta o BCryptPasswordEncoder
         this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User authenticateUser(String username, String password) {
@@ -38,7 +38,6 @@ public class UserService {
         newUser.setStreet(registerRequest.getStreet());
         newUser.setNumber(registerRequest.getNumber());
         newUser.setZipcode(registerRequest.getZipcode());
-
         return userRepository.save(newUser);
     }
 }

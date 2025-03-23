@@ -145,10 +145,6 @@ public List<FakeStoreUser> generateFakeUsers(int quantity) {
                 user.setNumber(fakeStoreUser.getAddress().getNumber());
             }
             user.setZipcode(fakeStoreUser.getAddress().getZipcode());
-            if (fakeStoreUser.getAddress().getGeolocation() != null) {
-                user.setLat(fakeStoreUser.getAddress().getGeolocation().getLat());
-                user.setLongitude(fakeStoreUser.getAddress().getGeolocation().getLongitude());
-            }
         }
         try {
                userRepository.save(user);

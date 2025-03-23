@@ -38,12 +38,6 @@ public class User {
     @Column(name = "zipcode")
     private String zipcode;
 
-    @Column(name = "lat")
-    private String lat;
-
-    @Column(name = "longitude")
-    private String longitude;
-
-    @Version // Adicione o versionamento otimista
+    @Version 
     private Integer version;
 }

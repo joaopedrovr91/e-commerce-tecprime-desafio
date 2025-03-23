@@ -18,12 +18,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/auth/register", "/auth/login").permitAll()
-                        .requestMatchers("/products").permitAll() // Permitir acesso a /products sem autenticação
-                        .anyRequest().authenticated())
-            .httpBasic();
-    return http.build();
+        http.csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers("/auth/register", "/auth/login", "/products/**").permitAll()
+                .anyRequest().permitAll()) 
+            .httpBasic().disable(); 
+
+        return http.build();
     }
 }
