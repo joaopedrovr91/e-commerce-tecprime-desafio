@@ -100,7 +100,6 @@ public List<FakeStoreUser> generateFakeUsers(int quantity) {
         FakeStoreUser user = new FakeStoreUser();
         FakeStoreUser.Name name = new FakeStoreUser.Name();
         FakeStoreUser.Address address = new FakeStoreUser.Address();
-        FakeStoreUser.Geolocation geolocation = new FakeStoreUser.Geolocation();
         user.setId(i + 100);
         user.setEmail(faker.internet().emailAddress());
         user.setUsername(faker.name().username());
@@ -113,9 +112,6 @@ public List<FakeStoreUser> generateFakeUsers(int quantity) {
         address.setStreet(faker.address().streetName());
         address.setNumber(faker.number().numberBetween(1, 1000));
         address.setZipcode(faker.address().zipCode());
-        geolocation.setLat(faker.address().latitude());
-        geolocation.setLongitude(faker.address().longitude());
-        address.setGeolocation(geolocation);
         user.setAddress(address);
         users.add(user);
 

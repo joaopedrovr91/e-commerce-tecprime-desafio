@@ -27,12 +27,5 @@ public class FakeStoreUser {
         private String street;
         private Integer number;
         private String zipcode;
-        private Geolocation geolocation;
-    }
-
-    @Data
-    public static class Geolocation {
-        private String lat;
-        private String longitude;
     }
 }
