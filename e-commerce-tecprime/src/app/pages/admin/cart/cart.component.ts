@@ -3,6 +3,8 @@ import { CartService } from '../../../services/cart/cart.service';
 import { CartItem } from '../../../models/cart-item.model';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +18,11 @@ export class CartComponent implements OnInit, OnDestroy {
   cartItems: CartItem[] = [];
   private cartSubscription: Subscription | undefined;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private authService: AuthService 
+  ) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
@@ -38,5 +44,15 @@ export class CartComponent implements OnInit, OnDestroy {
 
   getTotal(): number {
     return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+
+  goToCheckout() {
+    if (this.authService.isLoggedIn()) {
+      // Redirecionar para a tela de pagamento
+      this.router.navigate(['/checkout']);
+    } else {
+      // Redirecionar para a tela de login
+      this.router.navigate(['/login']);
+    }
   }
 }

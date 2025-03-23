@@ -15,5 +15,6 @@
     <div class="card-footer">
         Total: {{getTotal() | currency:'BRL'}}
         <button class="btn btn-danger float-end" (click)="clearCart()">Limpar carrinho</button>
+        <button class="btn btn-success float-end" (click)="goToCheckout()" style="margin-right: 10px;">Comprar</button> <!-- Botão Comprar -->
     </div>
 </div>

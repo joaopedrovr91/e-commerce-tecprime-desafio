@@ -9,19 +9,13 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/">Produtos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li>
       </ul>
       <form class="d-flex align-items-center">
-        <input class="form-control me-2 form-control-sm" type="text" placeholder="Search">
-        <button class="btn btn-primary btn-sm" type="button" style="margin-left: 5px;">Search</button>
+        <button class="btn btn-outline-primary btn-sm" routerLink="/login" style="margin-right: 5px;">Login</button>
+        <button class="btn btn-outline-secondary btn-sm" routerLink="/register" style="margin-right: 15px;">Cadastrar</button>
         <!-- Cart icon with counter -->
         <li class="nav-item" style="margin-left: 15px; margin-right: 15px;">
-          <a class="nav-link" routerLink="/cart">  <!-- Redireciona para a página do carrinho -->
+          <a class="nav-link" routerLink="/cart">
             <img class="image_carrinho" src="carrinho_compras.png">
             <span class="badge bg-success">{{ cartItemsCount$ | async }}</span>
           </a>

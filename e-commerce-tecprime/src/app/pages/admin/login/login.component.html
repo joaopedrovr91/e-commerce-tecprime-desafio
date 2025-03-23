@@ -24,7 +24,8 @@
                         <i class="fab fa-facebook-f social-icon"></i>
                         <i class="fab fa-twitter social-icon"></i>
                     </div>
-                    <button type="button" (click)="onLogin()">Login</button>
+                    <p *ngIf="loginError" class="error-message">{{ loginError }}</p> <!-- Exibe a mensagem de erro -->
+                    <button type="button" (click)="login()">Login</button>
                 </form>
             </div>
         </div>

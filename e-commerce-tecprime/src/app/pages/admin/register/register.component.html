@@ -1,0 +1,51 @@
+<div class="parent">
+    <div class="container">
+        <div class="left-section"></div>
+        <div class="right-section">
+            <div class="login-container">
+                <form class="login-form">
+                    <h2 class="login-title"><i class="fas fa-user-circle"></i> Register</h2>
+                    <div class="form-control">
+                        <i class="fas fa-user icon"></i>
+                        <input type="text" name="username" [(ngModel)]="registerObj.username" placeholder="Username" required>
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="email" name="email" [(ngModel)]="registerObj.email" placeholder="Email" required>
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-lock icon"></i>
+                        <input type="password" name="password" [(ngModel)]="registerObj.password" placeholder="Password" required>
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-id-card icon"></i>
+                        <input type="text" name="name" [(ngModel)]="registerObj.name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-phone icon"></i>
+                        <input type="text" name="phone" [(ngModel)]="registerObj.phone" placeholder="Phone Number">
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-city icon"></i>
+                        <input type="text" name="city" [(ngModel)]="registerObj.city" placeholder="City">
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-road icon"></i>
+                        <input type="text" name="street" [(ngModel)]="registerObj.street" placeholder="Street Address">
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-home icon"></i>
+                        <input type="number" name="number" [(ngModel)]="registerObj.number" placeholder="House Number">
+                    </div>
+                    <div class="form-control">
+                        <i class="fas fa-map-pin icon"></i>
+                        <input type="text" name="zipcode" [(ngModel)]="registerObj.zipcode" placeholder="Zip Code">
+                    </div>
+
+                    <p *ngIf="registerError" class="error-message">{{ registerError }}</p>
+                    <button type="button" (click)="register()">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
