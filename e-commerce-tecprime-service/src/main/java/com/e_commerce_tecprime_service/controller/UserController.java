@@ -1,9 +1,11 @@
 package com.e_commerce_tecprime_service.controller;
 
 import com.e_commerce_tecprime_service.dto.LoginRequest;
+import com.e_commerce_tecprime_service.dto.LoginResponse;
 import com.e_commerce_tecprime_service.dto.RegisterRequest;
 import com.e_commerce_tecprime_service.entity.User;
 import com.e_commerce_tecprime_service.service.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -24,24 +26,32 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         try {
-             User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
-             return ResponseEntity.ok(user);
+            User user = userService.loginUser(loginRequest.getUsername(), loginRequest.getPassword());
+
+            if (user != null) {
+                LoginResponse loginResponse = new LoginResponse();
+                loginResponse.setToken("login_success"); // Não estamos usando JWT, mas retornamos algo para indicar sucesso
+                return ResponseEntity.ok(loginResponse);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            }
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            logger.error("Error during login", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
         }
     }
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterRequest registerRequest) {
-        logger.info("Received register request: {}", registerRequest); // Log da requisição recebida
+        logger.info("Received register request: {}", registerRequest);
         try {
             User registeredUser = userService.registerUser(registerRequest);
-            logger.info("User registered successfully: {}", registeredUser); // Log de sucesso
+            logger.info("User registered successfully: {}", registeredUser);
             return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
         } catch (Exception e) {
-            logger.error("Error registering user", e); // Log de erro
+            logger.error("Error registering user", e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

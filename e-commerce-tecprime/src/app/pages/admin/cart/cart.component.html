@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header">
-        Carrinho de Compras
+    <div class="card-header bg-primary text-white">
+        CARRINHO DE COMPRAS
     </div>
     <div class="card-body">
         <ul class="list-group" *ngIf="cartItems.length > 0; else emptyCart">
@@ -12,8 +12,8 @@
             <p>O carrinho está vazio.</p>
         </ng-template>
     </div>
-    <div class="card-footer">
-        Total: {{getTotal() | currency:'BRL'}}
+    <div class="card-footer bg-primary text-white">
+        TOTAL: {{getTotal() | currency:'BRL'}}
         <button class="btn btn-danger float-end" (click)="clearCart()">Limpar carrinho</button>
         <button class="btn btn-success float-end" (click)="goToCheckout()" style="margin-right: 10px;">Comprar</button> <!-- Botão Comprar -->
     </div>

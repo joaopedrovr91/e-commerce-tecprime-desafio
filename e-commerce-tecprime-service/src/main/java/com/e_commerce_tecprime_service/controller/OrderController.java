@@ -21,7 +21,12 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {
-        Order createdOrder = orderService.createOrder(orderRequest.getOrder(), orderRequest.getOrderItems());
-        return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+        try {
+            Order createdOrder = orderService.createOrder(orderRequest.getOrder(), orderRequest.getOrderItems());
+            return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+        } catch (Exception e) {
+             e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

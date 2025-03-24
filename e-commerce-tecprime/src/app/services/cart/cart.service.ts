@@ -12,13 +12,14 @@ export class CartService {
   private cartItemsSubject = new BehaviorSubject<CartItem[]>(this.cartItems);
   cartItems$ = this.cartItemsSubject.asObservable();
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+
+  loadCart(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Carregar o carrinho do localStorage ao inicializar o serviço (opcional)
       const storedCart = localStorage.getItem('cart');
       if (storedCart) {
         this.cartItems = JSON.parse(storedCart);
-        this.cartItemsSubject.next(this.cartItems);
+        this.cartItemsSubject.next([...this.cartItems]); // Notificar os subscribers
       }
     }
   }

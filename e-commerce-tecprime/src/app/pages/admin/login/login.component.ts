@@ -30,8 +30,12 @@ export class LoginComponent {
   login() {
     this.http.post<any>('http://localhost:8080/auth/login', this.loginObj).subscribe(
       (response) => {
-        // Assuming the server returns the entire user object
-        this.authService.login(response, this.route.snapshot.queryParams['returnUrl'] || '/'); // Pass the user object
+        if (response && response.token === 'login_success') {
+          this.authService.login( response.token); 
+          this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']); // Navigate after successful login
+        } else {
+          this.loginError = 'Invalid credentials. Please try again.';
+        }
       },
       (error) => {
         this.loginError = 'Invalid credentials. Please try again.';
